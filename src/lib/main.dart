@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:toon/widgets/button.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
   // App == root of app ui
 }
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return (MaterialApp(
         home: Scaffold(
-      backgroundColor: Color(0xFF181818),
+      backgroundColor: const Color(0xFF181818),
       // backgroundColor: Color.fromARGB(18, 18, 18, 1),
       // backgroundColor: Colors.black,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -27,7 +30,7 @@ class App extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
+                    const Text(
                       'Hey, Sungohki',
                       style: TextStyle(
                         color: Colors.white,
@@ -45,7 +48,7 @@ class App extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
             Text(
@@ -55,10 +58,10 @@ class App extends StatelessWidget {
                 color: Colors.white.withOpacity(0.7),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               "\$5 194 482",
               style: TextStyle(
                 fontSize: 40,
@@ -66,30 +69,22 @@ class App extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Row(
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  child: Padding(
-                    child: Text(
-                      'Transfer',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 40,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(45),
-                  ),
+                Button(
+                  text: 'Transfer',
+                  bgColor: Color(0xFFF1B33B),
+                  textColor: Colors.black,
                 ),
+                Button(
+                  text: 'request',
+                  bgColor: Color(0xFF1F2123),
+                  textColor: Colors.white,
+                )
               ],
             ),
           ],

@@ -112,6 +112,8 @@ class App extends StatelessWidget {
               height: 15,
             ),
             Container(
+              // first card
+              clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 color: const Color(0xFF1F2123),
                 borderRadius: BorderRadius.circular(15),
@@ -119,6 +121,7 @@ class App extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,7 +140,7 @@ class App extends StatelessWidget {
                         Row(
                           children: [
                             const Text(
-                              '6 428',
+                              '6,428',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -156,6 +159,17 @@ class App extends StatelessWidget {
                           ],
                         ),
                       ],
+                    ),
+                    Transform.scale(
+                      scale: 2,
+                      child: Transform.translate(
+                        offset: const Offset(-5, 10),
+                        child: const Icon(
+                          Icons.euro_rounded,
+                          color: Colors.white,
+                          size: 80,
+                        ),
+                      ),
                     ),
                   ],
                 ),

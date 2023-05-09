@@ -64,7 +64,7 @@ class App extends StatelessWidget {
                 height: 10,
               ),
               const Text(
-                "\$5,194,482",
+                "\$5 194 482",
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.w600,
@@ -119,26 +119,23 @@ class App extends StatelessWidget {
                 amount: '6 428',
                 icon: Icons.euro_rounded,
                 isInverted: false,
+                overlap: 0,
               ),
-              Transform.translate(
-                offset: const Offset(0, -25),
-                child: const CurrencyCard(
-                  name: 'Bitcoin',
-                  code: 'BTC',
-                  amount: '9 785',
-                  icon: Icons.currency_bitcoin_rounded,
-                  isInverted: true,
-                ),
+              const CurrencyCard(
+                name: 'Bitcoin',
+                code: 'BTC',
+                amount: '9 785',
+                icon: Icons.currency_bitcoin_rounded,
+                isInverted: true,
+                overlap: -25,
               ),
-              Transform.translate(
-                offset: const Offset(0, -50),
-                child: const CurrencyCard(
-                  name: 'Dollar',
-                  code: 'USD',
-                  amount: '428',
-                  icon: Icons.attach_money_outlined,
-                  isInverted: false,
-                ),
+              const CurrencyCard(
+                name: 'Dollar',
+                code: 'USD',
+                amount: '428',
+                icon: Icons.attach_money_outlined,
+                isInverted: false,
+                overlap: -50,
               ),
             ],
           ),

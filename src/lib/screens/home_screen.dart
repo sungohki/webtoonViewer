@@ -2,34 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:toon/models/webtoon_model.dart';
 import 'package:toon/services/api_service.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  List<WebtoonModel> webtoons = [];
-  bool isLoading = true;
-
-  @override
-  void initState() {
-    // First Init
-    super.initState();
-    waitForWebToons();
-  }
-
-  void waitForWebToons() async {
-    webtoons = await ApiService.getTodaysToons();
-    isLoading = false;
-    setState(() {});
-  }
+  final Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
   @override
   Widget build(BuildContext context) {
-    // print(webtoons);
-    // print(isLoading);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -45,7 +24,27 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      // body: ,
+      body: FutureBuilder(
+        builder: (context, snapshot) {
+          if (snapshot.hasData == true) {
+            return ListView.separated(
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 10,
+              ),
+              itemBuilder: (context, index) {
+                var webtoon = snapshot.data![index];
+                return Text(webtoon.title);
+              },
+              scrollDirection: Axis.horizontal,
+              itemCount: snapshot.data!.length,
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+        future: webtoons,
+      ),
     );
   }
 }

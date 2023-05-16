@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toon/models/detail_model.dart';
 import 'package:toon/models/webtoon_episode_model.dart';
 import 'package:toon/services/api_service.dart';
+import 'package:toon/widgets/episode_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
@@ -115,45 +116,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             if (snapshot.hasData == true) {
                               return Column(
                                 children: [
-                                  for (var ep in snapshot.data!)
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.green.shade500,
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            offset: const Offset(5, 5),
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                            blurRadius: 5,
-                                          ),
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 12,
-                                          horizontal: 20,
-                                        ),
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                ep.title,
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                              Icon(
-                                                Icons.chevron_right_rounded,
-                                                color: Colors.white
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ]),
-                                      ),
-                                    )
+                                  for (var ep in snapshot.data!) Episode(ep: ep)
                                 ],
                               );
                             }
